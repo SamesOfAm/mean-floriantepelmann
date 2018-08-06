@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="bottom">
+        <div class="content">
+            <div class="left-side">
+                <div *ngIf="work.imgUrl" class="image-section">
+                    <img [src]="work.imgUrl">
+                    <p *ngIf="work.imgText">{{ work.imgText }}</p>
+                </div>
+                <div class="headline headline-detail">
+                    <div class="classification">
+                        <span>{{ work.classifications.join(' | ') }}</span>
+                    </div>
+                    <h1>{{ work.title }}</h1>
+                </div>
+            </div>
+            <div class="text-body">
+                <div class="back-button">
+                    <a href="../index.html">&larr; Back</a>
+                </div>
+                <div class="paragraph" *ngFor="let description of work.descriptions">
+                    <h3>{{ description.headline }}</h3>
+                    <p>{{ description.paragraph }}</p>
+                    <img *ngIf="description.image" [src]="description.image">
+                    <iframe *ngIf="description.iframe" [src]="description.iframe | safe" width="530px" height="400px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <a *ngIf="description.linkUrl" [href]="description.linkUrl">{{ description.linkText }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
